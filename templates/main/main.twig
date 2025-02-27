@@ -1,21 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Sidebar navigation -->
-    <nav class="sidebar">
-        <button class="sidebar__close">
-            <i class="fas fa-times"></i>
-        </button>
-        <ul class="sidebar__list">
-            <li class="sidebar__item">Fashion</li>
-            <li class="sidebar__item">Gaming</li>
-            <li class="sidebar__item">Footwear</li>
-            <li class="sidebar__item">Music</li>
+    {% include 'sidebar/sidebar.html.twig' %}
 
-        </ul>
-    </nav>
     <!-- Search input -->
-    <div class="container">
         <form class="search">
             <input type="text" placeholder="Search" class="search-form__input">
             <i class="search__icon fas fa-search"></i>
@@ -77,5 +65,4 @@
         <div>
             <button class="articles__load-more">LOAD MORE</button>
         </div>
-    </div>
 {% endblock %}

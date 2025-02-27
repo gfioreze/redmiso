@@ -29,14 +29,19 @@
     <header class="navbar">
         <nav class="navbar__container">
             <div class="navbar__brand">
+                <a href="{{ path('app_main') }}">
                 <img src="{{ asset('assets/redmiso_logo.svg') }}" class="navbar__logo" alt="Redmiso">
+                </a>
                 <button type="button" class="nav-header__toggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
     </header>
+    <div class="container">
     {% block body %}{% endblock %}
+    </div>
+
         <!-- Javascript -->
         {% block javascripts %}
             <script src="{{ asset('javascript/script.js') }}"></script>

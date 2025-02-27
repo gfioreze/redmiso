@@ -11,6 +11,8 @@
 /* 3. Sidebar
 /* 4. Main Section
     /* 4.1 Articles subsection
+
+ /* 5. Login Form
 /**********************************/
 
 /**********************************/
@@ -276,5 +278,91 @@ a {
 
     .article__content {
         padding: 1rem;
+    }
+}
+
+/**********************************/
+/* 5. Login Form
+/**********************************/
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login__form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background-color: var(--clr-background);
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login__title {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+    color: var(--clr-dark-gray);
+}
+
+.login__group {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.login__label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--clr-dark-gray);
+}
+
+.login__input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--clr-light-gray2);
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.login__button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background-color: var(--clr-black);
+    color: var(--clr-background);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.login__button:hover {
+    background-color: var(--clr-medium-dark-gray);
+}
+
+.login__error {
+    width: 100%;
+    padding: 1rem;
+    color: #cc0000;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.login__message {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+    .login__form {
+        width: 90%;
     }
 }
