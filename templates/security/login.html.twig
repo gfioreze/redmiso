@@ -7,35 +7,24 @@
     <div class="login">
         <form class="login__form" method="post">
 
-            {% if app.user %}
-                <div class="login__message">
-                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-            {% endif %}
-
             <h1 class="login__title">Please sign in</h1>
 
             <div class="login__group">
                 <label class="login__label" for="username">Email</label>
-                <input class="login__input" type="email" value="{{ last_username }}" name="_username" id="username" autocomplete="email" autofocus>
+                <input class="login__input" type="email" value="{{ last_username }}" name="email" id="username" autocomplete="email" autofocus>
             </div>
 
             <div class="login__group">
                 <label class="login__label" for="password">Password</label>
-                <input class="login__input" type="password" name="_password" id="password" autocomplete="current-password">
+                <input class="login__input" type="password" name="password" id="password" autocomplete="current-password">
             </div>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
+            <div class="checkbox">
                 <input type="checkbox" name="_remember_me" id="_remember_me">
                 <label for="_remember_me">Remember me</label>
             </div>
-            #}
 
             <button class="login__button" type="submit">Sign in</button>
             {% if error %}

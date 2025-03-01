@@ -44,8 +44,9 @@ body {
     padding-top: 5rem;
 }
 
-a {
+a, a:visited {
 	text-decoration: none;
+    color: var(--clr-medium-dark-gray);
 }
 
 /**********************************/
@@ -105,7 +106,7 @@ a {
 /**********************************/
 
 .sidebar {
-    width: 30%;
+    width: 25%;
     height: 100vh;
     background-color: var(--clr-background);
     color: var(--clr-dark-gray);
@@ -122,7 +123,7 @@ a {
     pointer-events: none;
 }
 
-@media (max-width: 775px) {
+@media (max-width: 1075px) {
     .sidebar {
         width: 48%;
     }
@@ -143,6 +144,26 @@ a {
     align-self: flex-start;
     padding: 0 1rem;
     margin-bottom: 1.9rem;
+}
+
+.sidebar__user_info {
+    padding: 1.2rem 1rem;
+    border-bottom: var(--clr-light-gray1) 1px solid;
+    margin-bottom: 1.5rem;
+}
+
+.user__icon, .logout__icon {
+    font-size: 1.2rem;
+    color: var(--clr-medium-dark-gray);
+}
+
+.logout__icon {
+    margin-left: 1rem;
+}
+
+.user__icon:hover, .logout__icon:hover {
+    color: var(--clr-dark-gray);
+    transition: var(--transition);
 }
 
 .sidebar__list {
@@ -358,6 +379,11 @@ a {
 
 .login__message {
     text-align: center;
+    margin-bottom: 1rem;
+}
+
+.checkbox {
+    width: 100%;
     margin-bottom: 1rem;
 }
 
