@@ -11,10 +11,15 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Routing\RouterInterface;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
+>>>>>>> security
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
 
@@ -22,7 +27,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
  * @see https://symfony.com/doc/current/security/custom_authenticator.html
  */
 class LoginFormAuthenticator extends AbstractAuthenticator
-{
+{gi 
     private UserRepository $userRepository;
     private RouterInterface $router;
 
@@ -45,9 +50,11 @@ class LoginFormAuthenticator extends AbstractAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->request->get('_username');
-        $password = $request->request->get('_password');
+        $email = $request->request->get('email');
+        $password = $request->request->get('password');
         $csrfToken = $request->request->get('_csrf_token');
+
+        $request->getSession()->set('_security.last_username', $email);
 
         return new Passport(
             new UserBadge($email, function ($userIdentifier) {
@@ -61,7 +68,12 @@ class LoginFormAuthenticator extends AbstractAuthenticator
 
             new PasswordCredentials($password),
             [
+<<<<<<< HEAD
             new CsrfTokenBadge('authenticate', $csrfToken)
+=======
+                new CsrfTokenBadge('authenticate', $csrfToken),
+                (new RememberMeBadge())->enable(),
+>>>>>>> security
             ]
         );
     }

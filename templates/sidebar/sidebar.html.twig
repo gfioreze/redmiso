@@ -3,6 +3,16 @@
     <button class="sidebar__close">
         <i class="fas fa-times"></i>
     </button>
+        {% if app.user %}
+            <div class="sidebar__user_info">
+                <a href="" class="user__info"><i class="user__icon fas fa-user-circle" title="{{ app.user.userIdentifier }}"></i>
+                    {{ app.user.firstName }}
+                </a>
+                <a href="{{ path('app_logout') }}" class="user__info"><i class="logout__icon fas fa-sign-out-alt" title="Logout"></i>
+                    Logout
+                </a>
+            </div>
+        {% endif %}
 
     <ul class="sidebar__list">
         <li class="sidebar__item">Fashion</li>
