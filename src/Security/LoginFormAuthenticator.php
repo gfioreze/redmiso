@@ -16,12 +16,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Routing\RouterInterface;
-<<<<<<< HEAD
-=======
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
->>>>>>> security
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
-use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
 
 /**
  * @see https://symfony.com/doc/current/security/custom_authenticator.html
@@ -68,12 +64,9 @@ class LoginFormAuthenticator extends AbstractAuthenticator
 
             new PasswordCredentials($password),
             [
-<<<<<<< HEAD
-            new CsrfTokenBadge('authenticate', $csrfToken)
-=======
-                new CsrfTokenBadge('authenticate', $csrfToken),
+
+            new CsrfTokenBadge('authenticate', $csrfToken),
                 (new RememberMeBadge())->enable(),
->>>>>>> security
             ]
         );
     }
