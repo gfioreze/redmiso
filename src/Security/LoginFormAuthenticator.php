@@ -23,7 +23,7 @@ use Symfony\Component\Security\Http\SecurityRequestAttributes;
  * @see https://symfony.com/doc/current/security/custom_authenticator.html
  */
 class LoginFormAuthenticator extends AbstractAuthenticator
-{gi 
+{
     private UserRepository $userRepository;
     private RouterInterface $router;
 
