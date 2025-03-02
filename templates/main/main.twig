@@ -2,13 +2,11 @@
 
 {% block body %}
     {% include 'sidebar/sidebar.html.twig' %}
-
     <!-- Search input -->
         <form class="search">
             <input type="text" placeholder="Search" class="search-form__input">
             <i class="search__icon fas fa-search"></i>
         </form>
-
         <!-- Articles section -->
         <section class="articles__section">
             <!-- Article -->
@@ -16,7 +14,7 @@
             <div class="article">
                 <!-- Article Image -->
                 <div class="article__image">
-                    <img src="/assets/carhartt_sacai.jpg" alt="">
+                    <img src="{{ article.image }}" alt="{{ article.image }}">
                 </div>
                 <!-- Article Content -->
                 <div class="article__content">
