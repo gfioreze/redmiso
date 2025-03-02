@@ -21,13 +21,11 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'required' => 'true',
                 'attr' => ['class' => 'register__input'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a name',
                     ]),
-
                     new Length([
                         'min' => 2,
                         'minMessage' => 'Your name should be at least {{ limit }} characters',
