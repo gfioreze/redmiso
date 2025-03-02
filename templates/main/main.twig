@@ -11,6 +11,8 @@
 
         <!-- Articles section -->
         <section class="articles__section">
+            <!-- Article -->
+            {% for article in articles %}
             <div class="article">
                 <!-- Article Image -->
                 <div class="article__image">
@@ -18,48 +20,14 @@
                 </div>
                 <!-- Article Content -->
                 <div class="article__content">
-                    <span class="article__tag">Fashion</span>
-                    <h1 class="article__title">Sacai Releases FW25 Collection Inspired by Where the Wild Things Are</h1>
+                    <span class="article__tag">{{ article.category.name }}</span>
+                    <h1 class="article__title">{{ article.title }}</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut pellentesque magna. Donec
-                        finibus imperdiet mollis. Curabitur commodo nulla sit amet lectus rutrum tempor. Sed convallis
-                        rutrum aliquet. Vivamus venenatis placerat tortor.
+                        {{ article.content }}
                     </p>
                 </div>
             </div>
-            <!-- Article -->
-            <div class="article">
-                <!-- Article Image -->
-                <div class="article__image">
-                    <img src="/assets/new_balance_1906r.jpg" alt="">
-                </div>
-                <!-- Article Content -->
-                <div class="article__content">
-                    <span class="article__tag">Gaming</span>
-                    <h1 class="article__title">New Balance Unveils the 1906R “Cordura Pack” for Spring</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor velit vel magna
-                        sollicitudin, sit amet blandit ipsum facilisis. Curabitur sit amet pretium lectus. Maecenas a
-                        augue at urna tincidunt fringilla at ac odio.
-                    </p>
-                </div>
-            </div>
-            <div class="article">
-                <!-- Article Image -->
-                <div class="article__image">
-                    <img src="/assets/vans.jpg" alt="">
-                </div>
-                <!-- Article Content -->
-                <div class="article__content">
-                    <span class="article__tag">Fashion</span>
-                    <h1 class="article__title">Get Skool’d: Vans (Re)Designs a Classic for the Modern Era</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius posuere odio, vitae
-                        blandit tortor ultricies ac. In urna nibh, molestie nec euismod at, venenatis a augue. Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                </div>
-            </div>
+            {% endfor %}
         </section>
         <!-- Load more button -->
         <div>

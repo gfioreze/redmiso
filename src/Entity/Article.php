@@ -26,7 +26,7 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?User $createdBy = null;
 
-    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'articles')]
     private ?Category $category = null;
 
     /**
