@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% include 'sidebar/sidebar.html.twig' %}
+    <div class="register">
+        <div class="register__form">
+            <h1 class="register__title">Make an account</h1>
+
+            {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'} }) }}
+
+            <div class="register__group">
+                {{ form_row(registrationForm.firstName) }}
+            </div>
+            <div class="register__group">
+                {{ form_row(registrationForm.email, {'attr': {'class': 'register__input'}}) }}
+            </div>
+            <div class="register__group">
+                {{ form_row(registrationForm.plainPassword, { label: 'Password', 'attr': {'class': 'register__input'} }) }}
+            </div>
+
+            <div class="register__group register__checkbox-group">
+                <label class="register__label">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    {{ form_label(registrationForm.agreeTerms) }}
+                </label>
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="register__button">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}
