@@ -27,6 +27,13 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Please enter a name',
                     ]),
+
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'Your name should be at least {{ limit }} characters',
+                        'max' => 254,
+                        'maxMessage' => 'Your name should not be longer than {{ limit }} characters'
+                    ])
                 ]
             ])
 
@@ -63,7 +70,8 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        'max' => 4096,
+                        'max' => 16,
+                        'maxMessage' => 'Your password should not be longer than {{ limit }} characters',
                     ]),
                 ],
             ]);
