@@ -146,14 +146,17 @@ a, a:visited {
     margin-bottom: 1.9rem;
 }
 
-.sidebar__user_info {
-    padding: 1.2rem 1rem;
+.sidebar__user_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0.8rem 0.6rem;
     border-bottom: var(--clr-light-gray1) 1px solid;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
 }
 
 .user__icon, .logout__icon {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--clr-medium-dark-gray);
 }
 
