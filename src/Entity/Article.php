@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[UniqueEntity(fields: ['slug'], message: 'Slug already exists', errorPath: 'title')]
 class Article
 {
     #[ORM\Id]
@@ -38,6 +40,12 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+<<<<<<< HEAD
+=======
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
+>>>>>>> icons
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -131,9 +139,25 @@ class Article
         return $this->image;
     }
 
+<<<<<<< HEAD
     public function setImage(string $image): static
     {
         $this->image = $image;
+=======
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+>>>>>>> icons
 
         return $this;
     }

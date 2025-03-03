@@ -13,9 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SecurityController extends AbstractController
 {
-    public function __construct(CategoryRepository $categoryRepository, EntityManagerInterface $entityManager) {
+    public function __construct(CategoryRepository $categoryRepository) {
         $this->categoryRepository = $categoryRepository;
-        //$this->entityManager = $entityManager;
+
     }
 
     #[Route(path: '/login', name: 'app_login')]

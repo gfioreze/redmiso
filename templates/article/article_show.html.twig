@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'sidebar/sidebar.html.twig' %}
+
+    <!-- Article section -->
+    <section class="article__section">
+        <div class="article">
+            <!-- Article Image -->
+            <div class="article__image">
+                <img src="{{ article.image }}" alt="">
+            </div>
+            <!-- Article Content -->
+            <div class="article__content">
+                <h1 class="article__title">{{ article.title }}</h1>
+                <p>
+                    {{ article.content }}
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
