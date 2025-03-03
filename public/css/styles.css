@@ -146,18 +146,23 @@ a, a:visited {
     margin-bottom: 1.9rem;
 }
 
+.sidebar__close:hover {
+    color: var(--clr-medium-dark-gray);
+    transform: scale(0.9) ;
+    transition: var(--transition);
+}
+
 .sidebar__user_box {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding: 0.8rem 0.6rem;
+    padding: 1rem 0.6rem;
     border-bottom: var(--clr-light-gray1) 1px solid;
     margin-bottom: 1.8rem;
 }
 
 .user__icon, .logout__icon {
     font-size: 1.4rem;
-    color: var(--clr-medium-dark-gray);
 }
 
 .logout__icon {

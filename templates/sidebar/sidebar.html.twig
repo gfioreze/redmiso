@@ -12,6 +12,12 @@
                         <i class="logout__icon bi bi-box-arrow-right" title="Logout"></i>
                     </a>
             </div>
+        {% else %}
+            <div class="sidebar__user_box">
+                <a href="{{ path('app_login') }}">
+                    Login / Sign Up
+                </a>
+            </div>
         {% endif %}
 
     <ul class="sidebar__list">
