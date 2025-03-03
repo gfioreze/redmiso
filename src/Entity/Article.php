@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[UniqueEntity(fields: ['slug'], message: 'This slug is already in use.')]
 class Article
 {
     #[ORM\Id]
@@ -34,6 +35,9 @@ class Article
      */
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article', orphanRemoval: true)]
     private Collection $comments;
+
+    #[ORM\Column(length: 255, unique: true)]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -119,6 +123,18 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
