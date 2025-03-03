@@ -46,7 +46,7 @@ body {
 
 a, a:visited {
 	text-decoration: none;
-    color: var(--clr-medium-dark-gray);
+    color: var(--clr-dark-gray);
 }
 
 /**********************************/

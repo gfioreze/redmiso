@@ -15,13 +15,17 @@
             {% for article in articles %}
             <div class="article">
                 <!-- Article Image -->
-                <div class="article__image">
-                    <img src="/assets/carhartt_sacai.jpg" alt="">
-                </div>
+                <a href="{{ path('show_article', { slug: article.slug }) }}">
+                    <div class="article__image">
+                        <img src="{{ article.image }}" alt="">
+                    </div>
+                </a>
                 <!-- Article Content -->
                 <div class="article__content">
                     <span class="article__tag">{{ article.category.name }}</span>
+                    <a href="{{ path('show_article', { slug: article.slug }) }}">
                     <h1 class="article__title">{{ article.title }}</h1>
+                    </a>
                     <p>
                         {{ article.content }}
                     </p>
