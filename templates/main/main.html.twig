@@ -29,9 +29,11 @@
                     <a href="{{ path('show_article', { slug: article.slug }) }}">
                     <h1 class="article__title">{{ article.title }}</h1>
                     </a>
-                    <p>
-                        {{ article.content }}
-                    </p>
+                    <a href="{{ path('show_article', { slug: article.slug }) }}">
+                        <p class="article__summary_paragraph">
+                            {{ article.content }}
+                        </p>
+                    </a>
                 </div>
             </div>
             {% endfor %}
