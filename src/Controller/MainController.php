@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\User;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,9 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class MainController extends AbstractController
 {
-    public function __construct(ArticleRepository $articleRepository, EntityManagerInterface $entityManager) {
+    public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager) {
         $this->articleRepository = $articleRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->entityManager = $entityManager;
     }
 
@@ -24,10 +26,11 @@ final class MainController extends AbstractController
     public function index(): Response
     {
         $articles = $this->articleRepository->findBy([], null, 3);
-        //dd($articles);
+        $categories = $this->categoryRepository->findAll();
         //$this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('main/main.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            'categories' => $categories
         ]);
     }
 

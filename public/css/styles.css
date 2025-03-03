@@ -147,13 +147,15 @@ a, a:visited {
 }
 
 .sidebar__user_info {
+    display: flex;
+    justify-content: flex-end;
     padding: 1.2rem 1rem;
     border-bottom: var(--clr-light-gray1) 1px solid;
     margin-bottom: 1.5rem;
 }
 
 .user__icon, .logout__icon {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--clr-medium-dark-gray);
 }
 

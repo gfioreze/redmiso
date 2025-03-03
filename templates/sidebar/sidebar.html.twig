@@ -1,24 +1,30 @@
 <!-- Sidebar navigation -->
 <nav class="sidebar">
     <button class="sidebar__close">
-        <i class="fas fa-times"></i>
+        <i class="bi bi-x-lg"></i>
     </button>
-        {% if app.user %}
-            <div class="sidebar__user_info">
-                <a href="" class="user__info"><i class="user__icon fas fa-user-circle" title="{{ app.user.userIdentifier }}"></i>
-                    {{ app.user.firstName }}
-                </a>
-                <a href="{{ path('app_logout') }}" class="user__info"><i class="logout__icon fas fa-sign-out-alt" title="Logout"></i>
-                    Logout
-                </a>
-            </div>
-        {% endif %}
+    {% if app.user %}
+        <div class="sidebar__user_info">
+            <a href="" class="user__info">
+                <i class="user__icon bi bi-person" title="{{ app.user.userIdentifier }}"></i>
+            </a>
+            <a href="{{ path('app_logout') }}" class="user__info">
+                <i class="logout__icon bi bi-box-arrow-right"></i>
+                <i></i>
+            </a>
+        </div>
+    {% else %}
+        <div class="sidebar__user_info">
+            <a href="{{ path('app_login') }}">
+                <p>Login / Sign Up</p>
+            </a>
+        </div>
+    {% endif %}
 
     <ul class="sidebar__list">
-        <li class="sidebar__item">Fashion</li>
-        <li class="sidebar__item">Gaming</li>
-        <li class="sidebar__item">Footwear</li>
-        <li class="sidebar__item">Music</li>
+        {% for category in categories %}
+            <li class="sidebar__item">{{ category.name }}</li>
+        {% endfor %}
 
     </ul>
 </nav>
