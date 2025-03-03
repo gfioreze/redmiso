@@ -12,7 +12,7 @@
 /* 4. Main Section
     /* 4.1 Articles subsection
 
-/*
+/* 5 Single article page
 /* 6. Login Form
 /* 7. Registration Form
 /**********************************/
@@ -183,6 +183,11 @@ a, a:visited {
     transition: var(--transition);
 }
 
+.login__link:hover {
+    transition: var(--transition);
+    color: var(--clr-medium-dark-gray);
+}
+
 .sidebar__list {
     list-style: none;
     padding: 0;
@@ -320,11 +325,7 @@ a, a:visited {
 }
 
 /**********************************/
-/* 5 Single Article Page
-/**********************************/
-
-/**********************************/
-/* 4.2. Single Article Page Styles
+/* 4.2. Single Article Page
 /**********************************/
 
 .single-article {
@@ -341,6 +342,7 @@ a, a:visited {
     background-color: var(--clr-background);
     padding: 2.5rem;
     border-radius: 10px;
+    line-height: 2rem;
 }
 
 .single-article__title {
@@ -366,8 +368,12 @@ a, a:visited {
 .single-article__content {
     font-size: 1.2rem;
     color: var(--clr-medium-dark-gray);
-    line-height: 1.8rem;
     text-align: justify;
+}
+
+.paragraph {
+    text-indent: 2rem;
+    color: var(--clr-dark-gray);
 }
 
 /* Responsive Design */

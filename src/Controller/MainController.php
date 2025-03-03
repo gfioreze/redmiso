@@ -28,7 +28,6 @@ final class MainController extends AbstractController
         $articles = $this->articleRepository->findBy([], null, 3);
         $categories = $this->categoryRepository->findAll();
 
-        //dd($articles);
         //$this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('main/main.html.twig', [
             'articles' => $articles,

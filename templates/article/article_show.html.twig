@@ -16,7 +16,9 @@
 
             <!-- Article Content -->
             <div class="single-article__content">
-                <p>{{ article.content }}</p>
+                {% for paragraph in article.content|split('\n') %}
+                    <p class="paragraph">{{ paragraph|raw }}</p>
+                {% endfor %}
             </div>
         </div>
     </section>

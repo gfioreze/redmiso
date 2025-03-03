@@ -31,7 +31,7 @@
                     </a>
                     <a href="{{ path('show_article', { slug: article.slug }) }}">
                         <p class="article__summary_paragraph">
-                            {{ article.content }}
+                            {{ article.content|slice(0,300) ~ '...' }}
                         </p>
                     </a>
                 </div>
