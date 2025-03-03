@@ -40,12 +40,9 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-<<<<<<< HEAD
-=======
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
->>>>>>> icons
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -125,7 +122,7 @@ class Article
     public function removeComment(Comment $comment): static
     {
         if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
+            // Set the owning side to null (unless already changed)
             if ($comment->getArticle() === $this) {
                 $comment->setArticle(null);
             }
@@ -139,14 +136,11 @@ class Article
         return $this->image;
     }
 
-<<<<<<< HEAD
-    public function setImage(string $image): static
+    public function setImage(?string $image): static
     {
         $this->image = $image;
-=======
-    public function setImage(?string $image): void
-    {
-        $this->image = $image;
+
+        return $this;
     }
 
     public function getSlug(): ?string
@@ -157,7 +151,6 @@ class Article
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
->>>>>>> icons
 
         return $this;
     }

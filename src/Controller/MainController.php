@@ -30,7 +30,6 @@ final class MainController extends AbstractController
 
         //dd($articles);
         //$this->denyAccessUnlessGranted('ROLE_USER');
-        //$this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('main/main.html.twig', [
             'articles' => $articles,
             'categories' => $categories
@@ -41,13 +40,15 @@ final class MainController extends AbstractController
     public function showArticle(string $slug, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->findOneBy(['slug' => $slug]);
+        $categories = $this->categoryRepository->findAll();
 
         if (!$article) {
             throw $this->createNotFoundException('The article does not exist');
         }
 
         return $this->render('article/article_show.html.twig', [
-           'article' => $article
+           'article' => $article,
+            'categories' => $categories
         ]);
     }
 }

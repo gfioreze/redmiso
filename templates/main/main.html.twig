@@ -2,31 +2,30 @@
 
 {% block body %}
     {% include 'sidebar/sidebar.html.twig' %}
+
     <!-- Search input -->
         <form class="search">
             <input type="text" placeholder="Search" class="search-form__input">
             <i class="search__icon bi bi-search"></i>
         </form>
+
         <!-- Articles section -->
         <section class="articles__section">
+
             <!-- Article -->
             {% for article in articles %}
             <div class="article">
                 <!-- Article Image -->
-<<<<<<< HEAD:templates/main/main.twig
-                <div class="article__image">
-                    <img src="{{ article.image }}" alt="{{ article.image }}">
-                </div>
-=======
                 <a href="{{ path('show_article', { slug: article.slug }) }}">
                     <div class="article__image">
                         <img src="{{ article.image }}" alt="">
                     </div>
                 </a>
->>>>>>> icons:templates/main/main.html.twig
+
                 <!-- Article Content -->
                 <div class="article__content">
                     <span class="article__tag">{{ article.category.name }}</span>
+
                     <a href="{{ path('show_article', { slug: article.slug }) }}">
                     <h1 class="article__title">{{ article.title }}</h1>
                     </a>
@@ -36,7 +35,9 @@
                 </div>
             </div>
             {% endfor %}
+
         </section>
+
         <!-- Load more button -->
         <div>
             <button class="articles__load-more">LOAD MORE</button>
