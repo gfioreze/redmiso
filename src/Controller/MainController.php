@@ -21,7 +21,7 @@ final class MainController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/', name: 'app_main')]
+    #[Route('/', name: 'app_main', methods: ['GET'])]
     //#[IsGranted(User::ROLE_ADMIN)]
     public function index(): Response
     {
@@ -35,10 +35,10 @@ final class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{slug}', name: 'show_article', requirements: ['slug' => Requirement::ASCII_SLUG])]
-    public function showArticle(string $slug, ArticleRepository $articleRepository): Response
+    #[Route('/article/{slug}', name: 'show_article', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['GET'])]
+    public function showArticle(string $slug): Response
     {
-        $article = $articleRepository->findOneBy(['slug' => $slug]);
+        $article = $this->articleRepository->findOneBy(['slug' => $slug]);
         $categories = $this->categoryRepository->findAll();
 
         if (!$article) {
