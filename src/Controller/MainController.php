@@ -40,7 +40,7 @@ final class MainController extends AbstractController
     {
         $article = $this->articleRepository->findOneBy(['slug' => $slug]);
         $categories = $this->categoryRepository->findAll();
-
+        //dd($article);
         if (!$article) {
             throw $this->createNotFoundException('The article does not exist');
         }

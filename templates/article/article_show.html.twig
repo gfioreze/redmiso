@@ -17,7 +17,7 @@
             <!-- Article Content -->
             <div class="single-article__content">
                 {% for paragraph in article.content|split('\n') %}
-                    <p class="paragraph">{{ paragraph|raw }}</p>
+                    <p class="paragraph">{{ paragraph|trim }}</p>
                 {% endfor %}
             </div>
         </div>

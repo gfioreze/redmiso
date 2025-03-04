@@ -23,6 +23,7 @@
 
 :root {
     --ff-primary: "Roboto", sans-serif;
+    --ff-secondary: "Roboto", serif;
 
     --clr-background: #FFFFFF;
     --clr-light-gray1: #EEEEEE;
@@ -42,7 +43,6 @@
 /**********************************/
 
 body {
-    font-family: var(--ff-primary);
     padding-top: 5rem;
 }
 
@@ -275,6 +275,7 @@ a, a:visited {
 
 .article__summary_paragraph {
     padding: 1rem 1.1rem 0rem;
+    font-family: var(--ff-primary);
     color: var(--clr-medium-dark-gray);
     line-height: 1.7rem;
 }
@@ -284,6 +285,7 @@ a, a:visited {
 }
 
 .article__tag {
+    font-family: var(--ff-primary);
     padding-left: 1.1rem;
     font-size: 0.8rem;
     font-weight: 600;
@@ -291,6 +293,7 @@ a, a:visited {
 }
 
 .article__title {
+    font-family: var(--ff-primary);
     padding-left: 1.1rem;
     margin-top: .6rem;
     font-size: 1.62rem;
@@ -339,10 +342,8 @@ a, a:visited {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--clr-background);
     padding: 2.5rem;
-    border-radius: 10px;
-    line-height: 2rem;
+    line-height: 1.9rem;
 }
 
 .single-article__title {
@@ -366,13 +367,13 @@ a, a:visited {
 }
 
 .single-article__content {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--clr-medium-dark-gray);
     text-align: justify;
 }
 
 .paragraph {
-    text-indent: 2rem;
+    text-indent: 3rem;
     color: var(--clr-dark-gray);
 }
 
@@ -383,7 +384,7 @@ a, a:visited {
     }
 
     .single-article__content {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .single-article__container {
