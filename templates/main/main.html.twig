@@ -4,8 +4,8 @@
     {% include 'sidebar/sidebar.html.twig' %}
 
     <!-- Search input -->
-        <form class="search">
-            <input type="text" placeholder="Search" class="search-form__input">
+        <form class="search" action="{{ path('articles_search') }}">
+            <input type="text" name="q" placeholder="Search" class="search-form__input">
             <i class="search__icon bi bi-search"></i>
         </form>
 

@@ -9,13 +9,15 @@ use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class MainController extends AbstractController
 {
-    public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager) {
+    public function __construct(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager)
+    {
         $this->articleRepository = $articleRepository;
         $this->categoryRepository = $categoryRepository;
         $this->entityManager = $entityManager;
@@ -46,7 +48,21 @@ final class MainController extends AbstractController
         }
 
         return $this->render('article/article_show.html.twig', [
-           'article' => $article,
+            'article' => $article,
+            'categories' => $categories
+        ]);
+    }
+
+    #[Route('/search', name: 'articles_search', methods: ['GET'])]
+    public function search(Request $request, ArticleRepository $articleRepository): Response
+    {
+        $categories = $this->categoryRepository->findAll();
+        $query = (string) $request->query->get('q', '');
+        $articles = $articleRepository->findBySearchQuery($query);
+
+        return $this->render('main/search.html.twig', [
+           'articles' => $articles,
+            'query' => $query,
             'categories' => $categories
         ]);
     }

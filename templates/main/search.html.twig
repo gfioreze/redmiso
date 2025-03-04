@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'sidebar/sidebar.html.twig' %}
+    <form class="search" action="{{ path('articles_search') }}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search" class="search-form__input">
+        <i class="search__icon bi bi-search"></i>
+    </form>
+
+    <section class="articles__section">
+        {% if articles is empty %}
+
+        {% else %}
+            {% for article in articles %}
+                <div class="article">
+                    <a href="{{ path('show_article', { slug: article.slug }) }}">
+                        <div class="article__image">
+                            <img src="{{ article.image }}" alt="">
+                        </div>
+                    </a>
+
+                    <div class="article__content">
+                        <span class="article__tag">{{ article.category.name }}</span>
+                        <a href="{{ path('show_article', { slug: article.slug }) }}">
+                            <h1 class="article__title">{{ article.title }}</h1>
+                        </a>
+                        <a href="{{ path('show_article', { slug: article.slug }) }}">
+                            <p class="article__summary_paragraph">
+                                {{ article.content|slice(0,240) ~ '...' }}
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+{% endblock %}
