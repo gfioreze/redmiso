@@ -239,6 +239,9 @@ a, a:visited {
 }
 
 .search__icon {
+    border: none;
+    cursor: pointer;
+    background-color: white;
     position: absolute;
     top: 50%;
     right: 1.5%;

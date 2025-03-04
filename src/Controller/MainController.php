@@ -23,12 +23,17 @@ final class MainController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    private function getCategories(): array
+    {
+        return $this->categoryRepository->findAll();
+    }
+
     #[Route('/', name: 'app_main', methods: ['GET'])]
     //#[IsGranted(User::ROLE_ADMIN)]
     public function index(): Response
     {
         $articles = $this->articleRepository->findBy([], null, 3);
-        $categories = $this->categoryRepository->findAll();
+        $categories = $this->getCategories();
 
         //$this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('main/main.html.twig', [
@@ -41,8 +46,8 @@ final class MainController extends AbstractController
     public function showArticle(string $slug): Response
     {
         $article = $this->articleRepository->findOneBy(['slug' => $slug]);
-        $categories = $this->categoryRepository->findAll();
-        //dd($article);
+        $categories = $this->getCategories();
+
         if (!$article) {
             throw $this->createNotFoundException('The article does not exist');
         }
@@ -56,7 +61,7 @@ final class MainController extends AbstractController
     #[Route('/search', name: 'articles_search', methods: ['GET'])]
     public function search(Request $request, ArticleRepository $articleRepository): Response
     {
-        $categories = $this->categoryRepository->findAll();
+        $categories = $this->getCategories();
         $query = (string) $request->query->get('q', '');
         $articles = $articleRepository->findBySearchQuery($query);
 
