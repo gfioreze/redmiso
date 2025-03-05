@@ -405,6 +405,7 @@ a, a:visited {
 
 .login {
     display: flex;
+    font-family: var(--ff-primary);
     justify-content: center;
     align-items: center;
     height: 80vh;
@@ -495,6 +496,7 @@ a, a:visited {
 
 .register {
     display: flex;
+    font-family: var(--ff-primary);
     justify-content: center;
     align-items: center;
     height: 80vh;
