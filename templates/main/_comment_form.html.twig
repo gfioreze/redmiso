@@ -1,0 +1,10 @@
+<div class="article__comment">
+    <form method="POST" action="{{ path('comment_new', {'slug': slug}) }}">
+        {{ form_start(commentForm) }}
+        {{ form_widget(commentForm) }}
+        <button class="comment__button" type="submit">
+            Comment
+        </button>
+        {{ form_end(commentForm) }}
+    </form>
+</div>

@@ -21,5 +21,15 @@
                 {% endfor %}
             </div>
         </div>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'main/_comment_form.html.twig' %}
+            {% else %}
+        <div class="article__comment_sign-in">
+            <a href="{{ path('app_login') }}" class="login__button_secondary">
+                <p>Sign in</p>
+            </a>
+                <h1 class="comment_message">to write a comment</h1>
+        </div>
+        {% endif %}
     </section>
 {% endblock %}
