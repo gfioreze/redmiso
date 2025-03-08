@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CommentType extends AbstractType
 {
@@ -17,11 +18,18 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
+                'required' => false,
                 'label' => false,
                 'attr' => [
                     'class' => 'comment__textarea',
                     'placeholder' => 'Write a comment...'
-                ]
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Comment cannot be empty'
+                    ])
+                ],
+                'error_bubbling' => false
             ]);
     }
 
@@ -29,6 +37,9 @@ class CommentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Comment::class,
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id' => 'comment_item'
         ]);
     }
 }

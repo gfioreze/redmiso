@@ -28,7 +28,9 @@
 
             <button class="login__button" type="submit">Sign in</button>
             {% if error %}
-                <div class="login__error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <div class="login__error">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
             {% endif %}
         </form>
     </div>

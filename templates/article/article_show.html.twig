@@ -3,33 +3,30 @@
 {% block body %}
     {% include 'sidebar/sidebar.html.twig' %}
 
-    <!-- Single Article Section -->
     <section class="single-article">
         <div class="single-article__container">
-            <!-- Article Title -->
             <h1 class="single-article__title">{{ article.title }}</h1>
 
-            <!-- Article Image -->
             <div class="single-article__image-container">
                 <img class="single-article__image" src="{{ article.image }}" alt="{{ article.title }}">
             </div>
 
-            <!-- Article Content -->
             <div class="single-article__content">
                 {% for paragraph in article.content|split('\n') %}
                     <p class="paragraph">{{ paragraph|trim }}</p>
                 {% endfor %}
             </div>
         </div>
+
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        {% include 'main/_comment_form.html.twig' %}
-            {% else %}
-        <div class="article__comment_sign-in">
-            <a href="{{ path('app_login') }}" class="login__button_secondary">
-                <p>Sign in</p>
-            </a>
+            {% include 'main/_comment_form.html.twig' %}
+        {% else %}
+            <div class="article__comment_sign-in">
+                <a href="{{ path('app_login') }}" class="login__button_secondary">
+                    <p>Sign in</p>
+                </a>
                 <h1 class="comment_message">to write a comment</h1>
-        </div>
+            </div>
         {% endif %}
     </section>
 {% endblock %}

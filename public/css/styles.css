@@ -345,13 +345,13 @@ a, a:visited {
 
 .single-article__container {
     max-width: 1251px;
-    width: 80%;
+    width: 87%;
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     align-items: center;
     padding: 2.5rem 0;
     line-height: 1.9rem;
-    border-bottom: 1px solid var(--clr-light-gray2);
 }
 
 .single-article__title {
@@ -383,18 +383,35 @@ a, a:visited {
 }
 
 .paragraph {
-    text-indent: 3rem;
+    text-indent: 2.4rem;
     color: var(--clr-dark-gray);
 }
 
 .article__comment {
     padding: 3rem 0 2.5rem;
+    font-family: var(--ff-primary);
+    color: var(--clr-dark-gray);
+    width: 87%;
+    margin: 0 auto;
+    border-top: 1px solid var(--clr-light-gray2);
 }
+
+.error__label {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Space between error message and input */
+    display: block; /* Ensures it appears as a separate block above the input */
+}
+
 
 .article__comment_sign-in {
     padding: 3rem 0 2.5rem;
     display: flex;
     align-items: center;
+    width: 87%;
+    margin: 0 auto;
+    border-top: 1px solid var(--clr-light-gray2);
 }
 
 .comment_message {
@@ -414,6 +431,7 @@ a, a:visited {
     border: 1px solid var(--clr-light-gray2);
     border-radius: 0.4rem;
     padding: 0.8rem;
+    margin-top: 1.2rem;
     outline: none;
 }
 
@@ -542,7 +560,6 @@ a, a:visited {
 .login__error {
     width: 100%;
     padding: 1rem;
-    color: #cc0000;
     margin-top: 1rem;
     text-align: center;
 }
