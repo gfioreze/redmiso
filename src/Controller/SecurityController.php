@@ -15,7 +15,6 @@ class SecurityController extends AbstractController
 {
     public function __construct(CategoryRepository $categoryRepository) {
         $this->categoryRepository = $categoryRepository;
-
     }
 
     #[Route(path: '/login', name: 'app_login')]
