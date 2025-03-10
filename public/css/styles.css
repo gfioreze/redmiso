@@ -535,9 +535,9 @@ a, a:visited {
 .login__input {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid var(--clr-light-gray2);
-    border-radius: 0.5rem;
     font-size: 1rem;
+    border: 1px solid var(--clr-medium-gray);
+    border-radius: 0.3rem;
     outline: none;
 }
 
@@ -619,11 +619,14 @@ a, a:visited {
 .register__input {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid var(--clr-light-gray2);
-    border-radius: 4px;
     font-size: 1rem;
-    margin-top: 0.5rem;
+    border: 1px solid var(--clr-medium-gray);
+    border-radius: 0.3rem;
     outline: none;
+}
+
+.register__label {
+    margin-bottom: 0.5rem;
 }
 
 .register__checkbox-group {

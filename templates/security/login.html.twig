@@ -1,22 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login | {{ parent() }} {% endblock %}
 
 {% block body %}
     {% include 'sidebar/sidebar.html.twig' %}
     <div class="login">
         <form class="login__form" method="post">
 
-            <h1 class="login__title">Please sign in</h1>
+            <h1 class="login__title">Log in with your account</h1>
 
             <div class="login__group">
-                <label class="login__label" for="username">Email</label>
-                <input class="login__input" type="email" value="{{ last_username }}" name="email" id="username" autocomplete="email" autofocus>
+                <input class="login__input" type="email" placeholder="E-mail address" value="{{ last_username }}" name="email" id="username" autocomplete="email" autofocus>
             </div>
 
             <div class="login__group">
-                <label class="login__label" for="password">Password</label>
-                <input class="login__input" type="password" name="password" id="password" autocomplete="current-password">
+                <input class="login__input" type="password" placeholder="Password" name="password" id="password" autocomplete="current-password">
             </div>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -35,4 +33,3 @@
         </form>
     </div>
 {% endblock %}
-

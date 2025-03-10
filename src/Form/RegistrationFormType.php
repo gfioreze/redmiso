@@ -21,7 +21,11 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'attr' => ['class' => 'register__input'],
+                'attr' => [
+                    'class' => 'register__input',
+                    'placeholder' => 'First Name'
+                ],
+                'label' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a name',
@@ -36,7 +40,11 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('email', EmailType::class, [
-                'attr' => ['class' => 'register__input'],
+                'attr' => [
+                    'class' => 'register__input',
+                    'placeholder' => 'E-mail'
+                ],
+                'label' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter an email'
@@ -60,7 +68,12 @@ class RegistrationFormType extends AbstractType
 
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password', 'class' => 'register__input'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'register__input',
+                    'placeholder' => 'Password'
+                ],
+                'label' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
