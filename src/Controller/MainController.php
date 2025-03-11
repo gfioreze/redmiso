@@ -22,11 +22,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 final class MainController extends AbstractController
 {
     public function __construct(
-        TokenStorageInterface    $tokenStorage,
+        TokenStorageInterface  $tokenStorage,
         ArticleRepository      $articleRepository,
         CategoryRepository     $categoryRepository,
         EntityManagerInterface $entityManager,
-        LoggerInterface $logger
+        LoggerInterface        $logger
     )
     {
         $this->logger = $logger;
@@ -78,13 +78,12 @@ final class MainController extends AbstractController
     #[Route('/comment/{slug}/new', name: 'comment_new', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['POST'])]
     #[IsGranted('IS_AUTHENTICATED')]
     public function commentNew(
-        Security $security,
+        Security               $security,
         Request                $request,
         EntityManagerInterface $entityManager,
         string                 $slug
     ): Response
     {
-        //$user = $this->tokenStorage->getToken()?->getUser();
         $user = $security->getUser();
         $article = $this->articleRepository->findOneBy(['slug' => $slug]);
 
@@ -96,55 +95,33 @@ final class MainController extends AbstractController
             throw $this->createNotFoundException('Article title is missing.');
         }
 
-        // Create a new comment and set the user
         $comment = new Comment();
         $comment->setCommentedBy($user);
 
-        // Add the comment with to the article
         $article->addComment($comment);
 
-        // Create the comment form
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
-        // Error handling / debugging
         if ($form->isSubmitted() && $form->isValid()) {
-
-            try
-            {
-                // Persist the comment
+            try {
                 $entityManager->persist($comment);
-                // Ensure article is also persisted (if needed)
-                //$entityManager->persist($article);
-                // Commit all changes to the database
                 $entityManager->flush();
-            }
-            catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e)
-            {
-                try {
-                    $entityManager->persist($comment);
-                    $entityManager->flush();
 
-                    return $this->redirectToRoute('show_article', ['slug' => $slug], Response::HTTP_SEE_OTHER);
-                } catch (\Exception $e) {
-                    $this->logger->error("Error saving comment: " . $e->getMessage());
-                }
+                return $this->redirectToRoute('show_article', [
+                    'slug' => $article->getSlug()
+                ]);
+            } catch (\Exception $e) {
+                $this->logger->error("Error saving comment: " . $e->getMessage());
             }
         }
 
-        // If the form is not valid, render the error page
         return $this->render('article/article_show.html.twig', [
             'article' => $article,
             'categories' => $this->getCategories(),
             'slug' => $slug,
             'commentForm' => $form->createView()
         ]);
-    }
-
-    // This function's sole purpose is to render the comment form
-    public function commentForm(): Response
-    {
-        return $this->render('main/_comment_form.html.twig');
     }
 
     #[Route('/search', name: 'articles_search', methods: ['GET'])]

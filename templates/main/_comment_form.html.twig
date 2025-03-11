@@ -1,10 +1,12 @@
 <div class="article__comment">
+    {% if form_errors(commentForm) %}
+        {{ form_errors(commentForm) }}
+    {% endif %}
+
     <form method="POST" action="{{ path('comment_new', {'slug': slug}) }}">
         {{ form_start(commentForm) }}
         {{ form_widget(commentForm) }}
-        <button class="comment__button" type="submit">
-            Comment
-        </button>
+        <button class="comment__button" type="submit">Comment</button>
         {{ form_end(commentForm) }}
     </form>
 </div>

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} {{ parent() }} | {{ article.title }} {% endblock %}
+
 {% block body %}
     {% include 'sidebar/sidebar.html.twig' %}
 
