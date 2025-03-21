@@ -30,5 +30,13 @@
                 <h1 class="comment_message">to write a comment</h1>
             </div>
         {% endif %}
+
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="comment__author">{{ comment.commentedBy.firstName }}</div>
+                <div class="comment__date">{{ comment.createdAt|date('F Y') }}</div>
+                <div class="comment__content">{{ comment.content }}</div>
+            </div>
+        {% endfor %}
     </section>
 {% endblock %}

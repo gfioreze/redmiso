@@ -8,6 +8,7 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,7 @@ final class MainController extends AbstractController
         TokenStorageInterface  $tokenStorage,
         ArticleRepository      $articleRepository,
         CategoryRepository     $categoryRepository,
+        CommentRepository      $commentRepository,
         EntityManagerInterface $entityManager,
         LoggerInterface        $logger
     )
@@ -33,6 +35,7 @@ final class MainController extends AbstractController
         $this->tokenStorage = $tokenStorage;
         $this->articleRepository = $articleRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->commentRepository = $commentRepository;
         $this->entityManager = $entityManager;
     }
 
@@ -60,6 +63,7 @@ final class MainController extends AbstractController
     {
         $article = $this->articleRepository->findOneBy(['slug' => $slug]);
         $categories = $this->getCategories();
+        $comments = $this->commentRepository->findBy(['article' => $article]);
 
         if (!$article) {
             throw $this->createNotFoundException('The article does not exist');
@@ -71,6 +75,7 @@ final class MainController extends AbstractController
             'article' => $article,
             'categories' => $categories,
             'commentForm' => $form,
+            'comments' => $comments,
             'slug' => $slug
         ]);
     }
