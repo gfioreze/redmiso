@@ -26,8 +26,8 @@
 
                 <!-- Article Content -->
                 <div class="article__content">
-                    <a href="{{ path('get_by_category', { category: article.category.name | lower}) }}">
-                        <span class="article__tag">{{ article.category.name }}</span>
+                    <a href="{{ path('get_by_category', { category: article.category.name | lower }) }}">
+                    <span class="article__tag">{{ article.category.name }}</span>
                     </a>
 
                     <a href="{{ path('article_show', { slug: article.slug }) }}">

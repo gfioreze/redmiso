@@ -58,7 +58,26 @@ final class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{slug}', name: 'show_article', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['GET'])]
+    #[Route('/{category}', name: 'get_by_category', methods: ['GET'])]
+    public function getArticlesByCategory(string $category): Response
+    {
+        $articleCategory = $this->categoryRepository->findOneBy(['name' => $category]);
+
+        if (!$articleCategory) {
+            throw $this->createNotFoundException('Category not found');
+        }
+
+        $articles = $this->articleRepository->findBy(['category' => $articleCategory]);
+
+        $categories = $this->getCategories();
+
+        return $this->render('category/get_by_category.html.twig', [
+            'articles' => $articles,
+            'categories' => $categories
+        ]);
+    }
+
+    #[Route('/article/{slug}', name: 'article_show', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['GET'])]
     public function showArticle(string $slug): Response
     {
         $article = $this->articleRepository->findOneBy(['slug' => $slug]);
@@ -80,7 +99,7 @@ final class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/comment/{slug}/new', name: 'comment_new', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['POST'])]
+    #[Route('/article/comment/{slug}/new', name: 'comment_new', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['POST'])]
     #[IsGranted('IS_AUTHENTICATED')]
     public function commentNew(
         Security               $security,
@@ -113,7 +132,7 @@ final class MainController extends AbstractController
                 $entityManager->persist($comment);
                 $entityManager->flush();
 
-                return $this->redirectToRoute('show_article', [
+                return $this->redirectToRoute('article_show', [
                     'slug' => $article->getSlug()
                 ]);
             } catch (\Exception $e) {

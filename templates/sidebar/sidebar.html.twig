@@ -3,26 +3,28 @@
     <button class="sidebar__close">
         <i class="bi bi-x-lg"></i>
     </button>
-        {% if app.user %}
-            <div class="sidebar__user_box">
-                    <a href="">
-                        <i class="user__icon bi bi-person" title="{{ app.user.userIdentifier }}"></i>
-                    </a>
-                    <a href="{{ path('app_logout') }}">
-                        <i class="logout__icon bi bi-box-arrow-right" title="Logout"></i>
-                    </a>
-            </div>
-        {% else %}
-            <div class="sidebar__user_box">
-                <a href="{{ path('app_login') }}" class="login__link">
-                    Login / Sign Up
-                </a>
-            </div>
-        {% endif %}
+    {% if app.user %}
+        <div class="sidebar__user_box">
+            <a href="">
+                <i class="user__icon bi bi-person" title="{{ app.user.userIdentifier }}"></i>
+            </a>
+            <a href="{{ path('app_logout') }}">
+                <i class="logout__icon bi bi-box-arrow-right" title="Logout"></i>
+            </a>
+        </div>
+    {% else %}
+        <div class="sidebar__user_box">
+            <a href="{{ path('app_login') }}" class="login__link">
+                Login / Sign Up
+            </a>
+        </div>
+    {% endif %}
 
     <ul class="sidebar__list">
         {% for category in categories %}
-        <li class="sidebar__item">{{ category.name }}</li>
+            <a href="{{ path('get_by_category', { 'category': category.name | lower }) }}">
+                <li class="sidebar__item">{{ category.name }}</li>
+            </a>
         {% endfor %}
     </ul>
 </nav>
