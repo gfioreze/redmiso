@@ -251,6 +251,11 @@ a, a:visited {
     color: var(--clr-light-gray2);
 }
 
+@media (max-width: 1270px) {
+    .container {
+        max-width: 98%;
+    }
+}
 
 /**********************************/
 /* 4.1. Articles subsection
