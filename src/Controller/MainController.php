@@ -58,10 +58,10 @@ final class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/{category}', name: 'get_by_category', methods: ['GET'])]
-    public function getArticlesByCategory(string $category): Response
+    #[Route('/articles/category/{categoryName}', name: 'get_by_category', methods: ['GET'])]
+    public function getArticlesByCategory(string $categoryName): Response
     {
-        $articleCategory = $this->categoryRepository->findOneBy(['name' => $category]);
+        $articleCategory = $this->categoryRepository->findOneBy(['name' => $categoryName]);
 
         if (!$articleCategory) {
             throw $this->createNotFoundException('Category not found');

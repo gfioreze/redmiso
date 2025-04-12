@@ -22,7 +22,7 @@
 
     <ul class="sidebar__list">
         {% for category in categories %}
-            <a href="{{ path('get_by_category', { 'category': category.name | lower }) }}">
+            <a href="{{ path('get_by_category', { 'categoryName': category.name | lower }) }}">
                 <li class="sidebar__item">{{ category.name }}</li>
             </a>
         {% endfor %}
