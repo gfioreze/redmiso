@@ -109,7 +109,7 @@ a, a:visited {
 /**********************************/
 
 .sidebar {
-    width: 25%;
+    width: 30em;
     height: 100vh;
     background-color: var(--clr-background);
     font-family: var(--ff-primary);
@@ -127,9 +127,9 @@ a, a:visited {
     pointer-events: none;
 }
 
-@media (max-width: 1075px) {
+@media (max-width: 620px) {
     .sidebar {
-        width: 48%;
+        width: 100vw;
     }
 }
 
@@ -190,6 +190,11 @@ a, a:visited {
     color: var(--clr-medium-dark-gray);
 }
 
+.sidebar__user_box p {
+    margin: 0 8px;
+    display: inline;
+}
+
 .sidebar__list {
     list-style: none;
     padding: 0;
@@ -207,7 +212,7 @@ a, a:visited {
 .sidebar__item:hover {
     background-color: var(--clr-medium-gray);
     color: var(--clr-background);
-    transform: scale(1.1);
+    transform: scale(1.07);
     transition: var(--transition);
 }
 

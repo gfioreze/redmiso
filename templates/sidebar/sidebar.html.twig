@@ -15,7 +15,11 @@
     {% else %}
         <div class="sidebar__user_box">
             <a href="{{ path('app_login') }}" class="login__link">
-                Login / Sign Up
+                Login
+            </a>
+            <p> | </p>
+            <a href="{{ path('app_register') }}" class="login__link">
+                Sign Up
             </a>
         </div>
     {% endif %}
