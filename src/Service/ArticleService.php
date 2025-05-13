@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\User;
 use App\Repository\ArticleRepository;
@@ -22,7 +23,7 @@ class ArticleService
     ) {}
 
     /**
-     * @return array<int, \App\Entity\Category>
+     * @return array<int, Category>
      */
     public function getCategories(): array
     {
@@ -34,7 +35,7 @@ class ArticleService
      */
     public function getHomePageData(): array
     {
-        $articles = $this->articleRepository->findBy([], null, 3);
+        $articles = $this->articleRepository->findBy([], ['id' => 'DESC']);
         $categories = $this->getCategories();
 
         return [
