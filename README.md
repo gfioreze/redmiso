@@ -1,11 +1,11 @@
 # Redmiso - Article Publishing Platform
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gfioreze/redmiso/main/public/assets/redmiso_logo.svg" alt="Redmiso Logo" width="300">
+  <img src="https://raw.githubusercontent.com/gfioreze/redmiso/main/public/assets/redmiso_logo.svg" alt="Redmiso Logo" width="250">
 </p>
 
 <p align="center">
-  <img src="https://symfony.com/logos/symfony_black_02.svg" alt="Powered by Symfony" width="200">
+  <img src="https://symfony.com/logos/symfony_black_02.svg" alt="Powered by Symfony" width="250">
 </p>
 
 ## Overview
@@ -53,7 +53,7 @@ With its clean design and intuitive interface, Redmiso delivers an outstanding u
   - Vanilla JavaScript
 
 - **Database**
-  - MySQL/PostgreSQL through Doctrine ORM
+  - MySQL (through Doctrine ORM)
 
 - **Testing**
   - PHPUnit for unit and functional tests
