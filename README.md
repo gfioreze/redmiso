@@ -1,14 +1,12 @@
 # Redmiso - Article Publishing Platform
 
 <p align="center">
-  <img src="https://placehold.co/600x200/e63946/ffffff?text=Redmiso+Logo" alt="Redmiso Logo" width="300">
+  <img src="https://raw.githubusercontent.com/gfioreze/redmiso/main/public/assets/redmiso_logo.svg" alt="Redmiso Logo" width="300">
 </p>
 
 <p align="center">
   <img src="https://symfony.com/logos/symfony_black_02.svg" alt="Powered by Symfony" width="200">
 </p>
-
-<p><em>Note: The Redmiso logo placeholder will be replaced by the actual logo when pushed to GitHub.</em></p>
 
 ## Overview
 
@@ -151,5 +149,5 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 ---
 
 <p align="center">
-  Made with ❤️ for readers and community engagement
+  Made with ❤️
 </p>
