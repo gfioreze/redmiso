@@ -149,5 +149,5 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 ---
 
 <p align="center">
-  Made with ❤️
+  Made with ❤️ by me :)
 </p>
